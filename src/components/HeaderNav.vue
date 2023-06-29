@@ -1,6 +1,6 @@
 <template>
     <nav class="header">
-        <div class="d-flex justify-content-between align-items-center ps-5 pe-5 pt-3 pb-3">
+        <div class="d-flex justify-content-between align-items-center">
             <div>
                 <img src="../assets/img/pachaqtec.png" alt="" srcset="">
             </div>
@@ -26,7 +26,7 @@ import { CarritoIcon, MenuIcon } from '@/components/icons';
   position: absolute;
   top: 10px;
   right: 9em;
-  background: red;
+  background: $color-morado;
   width: 25px;
   height: 25px;
   border-radius: 50%;

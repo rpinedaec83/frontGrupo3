@@ -11,6 +11,15 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import "@/assets/scss/main.scss";
+        `,
+      },
+    },
+  },
 })

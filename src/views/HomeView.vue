@@ -1,11 +1,8 @@
 <template>
-  <div>
-    <aside class="aside-background">
+  <aside class="aside-background padding-global">
       <h1 class="mb-5">¡Explota todo tu potencial tecnológico</h1>
-      <h6>Con nuestros programas de especialización</h6>
-    </aside>
-
-  </div>
+      <h5>Con nuestros programas de especialización</h5>
+  </aside>
 </template>
 <script setup>
 
@@ -17,5 +14,9 @@
   background-image: url(../assets/img/chica-laptop.png);
   height: 500px;
   position: relative !important;
+
+  h1, h5 {
+    color: $color-blanco;
+  }
 }
 </style>
