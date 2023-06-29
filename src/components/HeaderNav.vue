@@ -4,10 +4,12 @@
             <div>
                 <img src="../assets/img/pachaqtec.png" alt="" srcset="">
             </div>
-
-            <div>
-                <carrito-icon class="me-5"/>
-                <menu-icon class="mt-2"/>
+            <div class="d-flex">
+                <div class="me-5">
+                    <carrito-icon/>
+                    <span id="cart_menu_num"><strong>5</strong></span>
+                </div>
+                <menu-icon/>
             </div>
         </div>
     </nav>
@@ -18,5 +20,20 @@ import { CarritoIcon, MenuIcon } from '@/components/icons';
 <style lang="scss" scoped>
 .header {
     background: black;
+}
+
+#cart_menu_num {
+  position: absolute;
+  top: 10px;
+  right: 9em;
+  background: red;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 15px;
 }
 </style>

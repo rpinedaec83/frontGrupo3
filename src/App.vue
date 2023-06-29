@@ -4,10 +4,10 @@ import { HeaderNav } from '@/components'
 </script>
 
 <template>
-  <HeaderNav/>
+  <header-nav/>
   <router-view />
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 </style>
