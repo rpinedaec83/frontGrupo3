@@ -2,7 +2,7 @@
     <nav class="header">
         <div class="d-flex justify-content-between align-items-center">
             <div>
-                <img src="../assets/img/pachaqtec.png" alt="" srcset="">
+                <img :src="imgPachaqtec" alt="" srcset="">
             </div>
             <div class="d-flex">
                 <div class="me-5">
@@ -16,6 +16,8 @@
 </template>
 <script setup>
 import { CarritoIcon, MenuIcon } from '@/components/icons';
+import imgPachaqtec from '@/assets/img/pachaqtec-logo.png';
+
 </script>
 <style lang="scss" scoped>
 .header {
