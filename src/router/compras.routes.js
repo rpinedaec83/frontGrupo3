@@ -1,7 +1,7 @@
 import { ComprasView } from '@/views';
 
 export default {
-    path: '/',
+    path: '/compras',
     name: 'compras',
     component: ComprasView
 }
