@@ -1,13 +1,14 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import { HeaderNav } from '@/components'
+import { GlobalFooter } from '@/components';
 </script>
 
 <template>
   <div>
-    <!-- p-3 pt-3 pb-3 -->
-    <header-nav class="padding-global" />
+    <header-nav class="padding-global"/>
     <router-view />
+    <global-footer/>
   </div>
 </template>
 

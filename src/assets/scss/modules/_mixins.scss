@@ -1,5 +1,5 @@
 @mixin defineFont($font-family, $font-weight, $font-size) {
-    font-family: $font-family;
-    font-weight: $font-weight;
-    font-size: $font-size;
+    font-family: $font-family !important;
+    font-weight: $font-weight !important;
+    font-size: $font-size !important;
 }
