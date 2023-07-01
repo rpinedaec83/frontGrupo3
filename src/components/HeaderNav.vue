@@ -1,5 +1,5 @@
 <template>
-    <nav class="header">
+    <nav class="header-background">
         <div class="d-flex justify-content-between align-items-center">
             <div>
                 <img :src="imgPachaqtec" alt="" srcset="">
@@ -18,10 +18,18 @@
 import { CarritoIcon, MenuIcon } from '@/components/icons';
 import imgPachaqtec from '@/assets/img/pachaqtec-logo.png';
 
+defineProps({
+    
+})
+
 </script>
 <style lang="scss" scoped>
 .header {
-    background: black;
+    &-background{
+        position: fixed;
+        width: 100%;
+        z-index: 999999999999999;
+    }
 }
 
 #cart_menu_num {

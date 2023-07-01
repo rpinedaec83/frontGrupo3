@@ -1,11 +1,11 @@
 <template>
-  <aside class="aside-background">
+  <aside class="aside-background" :class="[isMediumScreen ? 'height:35rem' : '']">
     <div class="d-flex justify-content-between">
       <div class="d-flex flex-column justify-content-center">
         <h1 class="aside-principal-text mb-5">¡Explota todo tu potencial tecnológico!</h1>
         <h5 class="aside-secondary-text">Con nuestros programas de especialización</h5>
       </div>
-      <div class="celular-background p-5">
+      <div v-if="!isMediumScreen" class="celular-background p-5">
         <form-celular />
       </div>
     </div>
@@ -100,10 +100,16 @@
   </section>
 </template>
 <script setup>
+import { ref } from "vue";
+
+import { useMediaQuery } from '@vueuse/core'
+
 import imgRespaldoBlack from '@/assets/img/respaldo-black.png';
 import imgChicaLaptop2 from '@/assets/img/chica-laptop-2.png';
 import { FlechaAbajoIcon, WhatsAppIcon, BotonMasIcon, ComputadoraIcon, MaletaIcon, PersonaIcon } from '@/components/icons';
 import { FormCelular } from '@/components';
+
+const isMediumScreen = ref(useMediaQuery('(max-width: 768px)'));
 
 </script>
 <style lang="scss" scoped>
@@ -118,7 +124,6 @@ import { FormCelular } from '@/components';
     background-size: 100% 100%;
     background-image: url($img-chica-laptop);
     position: relative !important;
-    height: 32rem;
   }
 
   &-principal-text {
@@ -137,7 +142,7 @@ import { FormCelular } from '@/components';
     background-position: center center;
     background-image: url($img-celular);
     background-size: 100% 100%;
-    height: 40rem;
+    height: 45rem;
     width: 33.5rem;
     position: relative !important;
   }
@@ -220,5 +225,15 @@ import { FormCelular } from '@/components';
   }
 }
 
+/* Responsive */
+/* Tablet V */
+@media screen and (min-width: 768px) {
+  
+}
+
+/* Desktop */
+@media screen and (min-width: 992px) and (min-width: 1200px) {
+
+}
 
 </style>
