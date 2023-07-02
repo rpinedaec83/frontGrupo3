@@ -18,3 +18,9 @@
         </div>
     </form>
 </template>
+
+<style lang="scss" scoped>
+    .btn {
+        background-color: $color-morado;
+    }
+</style>

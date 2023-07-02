@@ -2,11 +2,11 @@
   <aside class="aside-background" :style="addAsideSize">
     <div class="d-flex justify-content-between">
       <div class="d-flex flex-column justify-content-center">
-        <h1 class="aside-principal-text mb-5" :style="addPaddingInHeaderTitle">¡Explota todo tu potencial tecnológico!
+        <h1 class="aside-principal-text mb-5" :style="addMarginInHeaderTitle">¡Explota todo tu potencial tecnológico!
         </h1>
         <h5 class="aside-secondary-text">Con nuestros programas de especialización</h5>
       </div>
-      <div v-if="!isMediumScreen" class="celular-background p-5" :style="addPaddingInCelular">
+      <div v-if="!isMediumScreen" class="celular-background p-5" :style="[addMarginInCelular, addWidthSizeInCelular]">
         <form-celular />
       </div>
     </div>
@@ -14,36 +14,12 @@
   <section>
     <div class="d-flex pt-5 justify-content-between">
       <img :src="imgRespaldoBlack" alt="">
-      <flecha-abajo-icon />
+      <flecha-abajo-icon v-if="!isMediumScreen" />
       <whats-app-icon />
     </div>
   </section>
   <section>
-    <h5 class="especializacion-titulo-principal mb-5">Conoce nuestros Programas de Especialización</h5>
-    <div class="container ps-0">
-      <div class="row">
-        <div class="col-6 ps-0">
-          <div class="especializacion-background p-4 d-flex flex-column justify-content-end">
-            <h3 class="especializacion-titulo mb-3">Desarrollo Front-End</h3>
-            <div v-if="true" class="d-flex especializacion-boton justify-content-end">
-              <boton-mas-icon class="me-2" />
-              <p>Ver más</p>
-            </div>
-            <p v-else class="d-flex especializacion-boton justify-content-end">Proximamente</p>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="especializacion-background p-4 d-flex flex-column justify-content-end">
-            <h3 class="especializacion-titulo mb-3">Diseño de Experiencia de Usuario</h3>
-            <div v-if="false" class="d-flex especializacion-boton justify-content-end">
-              <boton-mas-icon class="me-2" />
-              <p>Ver más</p>
-            </div>
-            <p v-else class="d-flex especializacion-proximamente justify-content-end">Proximamente</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <programas-especializacion :isMediumScreen=isMediumScreen />
   </section>
   <section class="ps-0 pe-0">
     <div class="d-flex comunidad-background">
@@ -100,28 +76,34 @@
     </div>
   </section>
 </template>
+
 <script setup>
 import { ref, computed } from 'vue';
 import { useMediaQuery } from '@vueuse/core'
 
-import { FlechaAbajoIcon, WhatsAppIcon, BotonMasIcon, ComputadoraIcon, MaletaIcon, PersonaIcon } from '@/components/icons';
-import { FormCelular } from '@/components';
+import { FlechaAbajoIcon, WhatsAppIcon, ComputadoraIcon, MaletaIcon, PersonaIcon, PencilIcon } from '@/components/icons';
+import { FormCelular, ProgramasEspecializacion } from '@/components';
 
 import imgRespaldoBlack from '@/assets/img/respaldo-black.png';
 import imgChicaLaptop2 from '@/assets/img/chica-laptop-2.png';
 
 const isMediumScreen = ref(useMediaQuery('(max-width: 768px)'));
+const isLargeScreen = ref(useMediaQuery('(max-width: 1097px)'));
 
 const addAsideSize = computed(() => {
   return addStyleWithCondition(!isMediumScreen.value, { height: '35rem' })
 });
 
-const addPaddingInHeaderTitle = computed(() => {
-  return addStyleWithCondition(isMediumScreen.value, { paddingTop: '10rem' })
+const addMarginInHeaderTitle = computed(() => {
+  return addStyleWithCondition(isMediumScreen.value, { marginTop: '10rem' })
 });
 
-const addPaddingInCelular = computed(() => {
+const addMarginInCelular = computed(() => {
   return addStyleWithCondition(!isMediumScreen.value, { marginTop: '2.1rem' })
+});
+
+const addWidthSizeInCelular = computed(() => {
+  return addStyleWithCondition(isLargeScreen.value, { height: '50rem' })
 });
 
 const addStyleWithCondition = (condition, styleObject) => {
@@ -200,6 +182,20 @@ const addStyleWithCondition = (condition, styleObject) => {
   &-boton {
     color: $color-blanco;
     @include defineFont($fuente_poppins, bold, 14px);
+
+    &-inscribete {
+      height: 3.5rem;
+      width: 15rem;
+      background-color: $color-rojo;
+      @include defineFont($fuente_poppins, bold, 14px);
+
+      &:active {
+        border-color: $color-blanco;
+        background-color: $color-morado;
+      }
+
+    }
+
   }
 
   &-proximamente {

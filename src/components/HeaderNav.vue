@@ -15,15 +15,29 @@
     </nav>
 </template>
 <script setup>
+import { computed } from 'vue'
+
 import { CarritoIcon, MenuIcon } from '@/components/icons';
 import imgPachaqtec from '@/assets/img/pachaqtec-logo.png';
 
-defineProps({
-    isActiveColorBackground: {
-        type: Boolean,
-        default: true
+const props = defineProps({
+    viewActual: {
+        type: String,
+        required: true
     }
-})
+});
+
+const isActiveColorBackground = computed(() => {
+  switch (props.viewActual) {
+    case 'home':
+      return false;
+    case 'login':
+      return false;
+    case 'compras':
+      return true;
+  }
+  return true;
+});
 
 </script>
 <style lang="scss" scoped>
