@@ -1,11 +1,12 @@
 <template>
-  <aside class="aside-background" :class="[isMediumScreen ? 'height:35rem' : '']">
+  <aside class="aside-background" :style="addAsideSize">
     <div class="d-flex justify-content-between">
       <div class="d-flex flex-column justify-content-center">
-        <h1 class="aside-principal-text mb-5">¡Explota todo tu potencial tecnológico!</h1>
+        <h1 class="aside-principal-text mb-5" :style="addPaddingInHeaderTitle">¡Explota todo tu potencial tecnológico!
+        </h1>
         <h5 class="aside-secondary-text">Con nuestros programas de especialización</h5>
       </div>
-      <div v-if="!isMediumScreen" class="celular-background p-5">
+      <div v-if="!isMediumScreen" class="celular-background p-5" :style="addPaddingInCelular">
         <form-celular />
       </div>
     </div>
@@ -100,16 +101,36 @@
   </section>
 </template>
 <script setup>
-import { ref } from "vue";
-
+import { ref, computed } from 'vue';
 import { useMediaQuery } from '@vueuse/core'
 
-import imgRespaldoBlack from '@/assets/img/respaldo-black.png';
-import imgChicaLaptop2 from '@/assets/img/chica-laptop-2.png';
 import { FlechaAbajoIcon, WhatsAppIcon, BotonMasIcon, ComputadoraIcon, MaletaIcon, PersonaIcon } from '@/components/icons';
 import { FormCelular } from '@/components';
 
+import imgRespaldoBlack from '@/assets/img/respaldo-black.png';
+import imgChicaLaptop2 from '@/assets/img/chica-laptop-2.png';
+
 const isMediumScreen = ref(useMediaQuery('(max-width: 768px)'));
+
+const addAsideSize = computed(() => {
+  return addStyleWithCondition(!isMediumScreen.value, { height: '35rem' })
+});
+
+const addPaddingInHeaderTitle = computed(() => {
+  return addStyleWithCondition(isMediumScreen.value, { paddingTop: '10rem' })
+});
+
+const addPaddingInCelular = computed(() => {
+  return addStyleWithCondition(!isMediumScreen.value, { marginTop: '2.1rem' })
+});
+
+const addStyleWithCondition = (condition, styleObject) => {
+  if (condition) {
+    return styleObject;
+  }
+  return {};
+}
+
 
 </script>
 <style lang="scss" scoped>
@@ -224,16 +245,4 @@ const isMediumScreen = ref(useMediaQuery('(max-width: 768px)'));
     @include defineFont($fuente_roboto, regular, 14px);
   }
 }
-
-/* Responsive */
-/* Tablet V */
-@media screen and (min-width: 768px) {
-  
-}
-
-/* Desktop */
-@media screen and (min-width: 992px) and (min-width: 1200px) {
-
-}
-
 </style>
