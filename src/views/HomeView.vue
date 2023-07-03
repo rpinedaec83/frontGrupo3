@@ -7,7 +7,7 @@
         <h5 class="aside-secondary-text">Con nuestros programas de especialización</h5>
       </div>
       <div v-if="!isMediumScreen" class="celular-background p-5" :style="[addMarginInCelular, addWidthSizeInCelular]">
-        <form-celular />
+        <form-celular class="p-5"/>
       </div>
     </div>
   </aside>
@@ -22,7 +22,7 @@
     <programas-especializacion :isMediumScreen=isMediumScreen />
   </section>
   <section class="ps-0 pe-0">
-    <div class="d-flex comunidad-background">
+    <div class="d-flex comunidad-background p-4" :class="[isMediumScreen ? 'flex-column' : '']">
       <img :src="imgChicaLaptop2" alt="">
       <div class="d-flex flex-column justify-content-center">
         <h3 class="comunidad-titulo">Sé parte de la comunidad</h3>
@@ -38,7 +38,7 @@
       </div>
     </div>
   </section>
-  <section>
+  <section class="mb-1">
     <h3 class="beneficios-titulo mb-5">Beneficios</h3>
     <div class="beneficios">
       <div class="d-flex">
@@ -46,8 +46,8 @@
           <persona-icon />
         </div>
         <div>
-          <h3>Aprende de Expertos</h3>
-          <p>Aprende directamente de expertos del mercado a través del análisis y solución de problemas de programación.
+          <h3 :class="[isMediumScreen ? 'mt-4' : '']">Aprende de Expertos</h3>
+          <p v-if="!isMediumScreen">Aprende directamente de expertos del mercado a través del análisis y solución de problemas de programación.
             Utilizando los frameworks y herramientas de mayor relevancia dentro del mundo del coding.</p>
         </div>
       </div>
@@ -56,8 +56,8 @@
           <computadora-icon />
         </div>
         <div>
-          <h3>Clases Virtuales</h3>
-          <p>Aprovecha tu tiempo al máximo en nuestras clases virtuales y participa presencialmente de nuestras
+          <h3 :class="[isMediumScreen ? 'mt-4' : '']">Clases Virtuales</h3>
+          <p v-if="!isMediumScreen">Aprovecha tu tiempo al máximo en nuestras clases virtuales y participa presencialmente de nuestras
             hackathones semanales para conocer y participar de la comunidad profesional que liderará la transformación
             tecnológica del Perú.</p>
         </div>
@@ -67,13 +67,16 @@
           <maleta-icon />
         </div>
         <div>
-          <h3>Empleabilidad</h3>
-          <p>Al finalizar el programa y certificarte a nombre de IDAT, podrás acceder a ofertas
+          <h3 :class="[isMediumScreen ? 'mt-4' : '']">Empleabilidad</h3>
+          <p v-if="!isMediumScreen">Al finalizar el programa y certificarte a nombre de IDAT, podrás acceder a ofertas
             laborales especialmente identificadas para la comunidad PachaQTec, a través de
             nuestra plataforma de empleabilidad IDAT JOB.</p>
         </div>
       </div>
     </div>
+  </section>
+  <section v-if="isMediumScreen">
+    <form-celular/>
   </section>
 </template>
 
@@ -81,7 +84,7 @@
 import { ref, computed } from 'vue';
 import { useMediaQuery } from '@vueuse/core'
 
-import { FlechaAbajoIcon, WhatsAppIcon, ComputadoraIcon, MaletaIcon, PersonaIcon, PencilIcon } from '@/components/icons';
+import { FlechaAbajoIcon, WhatsAppIcon, ComputadoraIcon, MaletaIcon, PersonaIcon } from '@/components/icons';
 import { FormCelular, ProgramasEspecializacion } from '@/components';
 
 import imgRespaldoBlack from '@/assets/img/respaldo-black.png';
@@ -156,51 +159,6 @@ const addStyleWithCondition = (condition, styleObject) => {
 
   &-check-politicas {
     @include defineFont($fuente_roboto, medium, 12px)
-  }
-}
-
-.especializacion {
-
-  &-titulo-principal {
-    @include defineFont($fuente_poppins, bold, 20px);
-  }
-
-  &-background {
-    background-position: center center;
-    background-image: url($img-example);
-    background-size: 100% 100%;
-    height: 20rem;
-    width: 20rem;
-    position: relative !important;
-  }
-
-  &-titulo {
-    color: $color-blanco;
-    @include defineFont($fuente_poppins, medium, 20px);
-  }
-
-  &-boton {
-    color: $color-blanco;
-    @include defineFont($fuente_poppins, bold, 14px);
-
-    &-inscribete {
-      height: 3.5rem;
-      width: 15rem;
-      background-color: $color-rojo;
-      @include defineFont($fuente_poppins, bold, 14px);
-
-      &:active {
-        border-color: $color-blanco;
-        background-color: $color-morado;
-      }
-
-    }
-
-  }
-
-  &-proximamente {
-    color: $color-plomo;
-    @include defineFont($fuente_poppins, bold, 14px);
   }
 }
 

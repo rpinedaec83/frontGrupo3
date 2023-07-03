@@ -1,6 +1,6 @@
 <template>
     <form action="">
-        <div class="text-center p-5">
+        <div class="text-center">
             <h3 class="celular-title mb-3">Postula y obtén un 10% de descuento en el programa</h3>
             <input class="form-control mb-3" type="text" placeholder="NOMBRE">
             <input class="form-control mb-3" type="text" placeholder="CELULAR">
