@@ -3,18 +3,18 @@
         ref="modalProgramaEspecializacion">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalle programa especialización</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <div class="modal-body">
-                    <form id="formEliminarMascota" action="#">
-                        <div class="container">
-                            <div class="text-center">
-                                <p>Estas seguro de eliminar a esta mascota??</p>
-                            </div>
-                            <div class="d-flex justify-content-evenly align-items-center">
-                                <button id="btnAceptarEliminarMascota" type="submit" class="button_modal">Aceptar</button>
-                                <button type="button" class="button_modal" data-bs-dismiss="modal">Cancelar</button>
-                            </div>
+                    <div class="container">
+                        <div class="d-flex justify-content-center flex-column gap-5">
+                            <h1 class="text-center">{{ programaEspecializacionSelected.nombreEspecializacion }}</h1>
+                            <img :src="`${programaEspecializacionSelected.imagenUrl}`" alt="">
+                            <p>{{ programaEspecializacionSelected.descripcion }}</p>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,6 +44,13 @@ defineExpose({
     show,
     close
 })
+
+defineProps({
+    programaEspecializacionSelected: {
+        type: Object,
+        required: true
+    }
+});
 
 </script>
 <style lang="scss"></style>

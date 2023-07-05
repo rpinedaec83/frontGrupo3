@@ -14,17 +14,17 @@
                         <h3 class="especializacion-titulo mb-3">{{ programaEspecializacion.nombreEspecializacion }}</h3>
                         <div v-if="programaEspecializacion.activo"
                             class="d-flex especializacion-boton justify-content-end cursor-pointer"
-                            @click="verDetalleEspecializacion()">
+                            @click="verDetalleEspecializacion(programaEspecializacion)">
                             <boton-mas-icon class="me-2" />
                             <p>Ver más</p>
                         </div>
-                        <p v-else class="d-flex especializacion-boton justify-content-end cursor-pointer"
-                            @click="verDetalleEspecializacion()">Proximamente</p>
+                        <p v-else class="d-flex especializacion-boton justify-content-end">Proximamente</p>
                     </div>
                 </div>
             </div>
         </div>
-        <modal-programa-especializacion ref="modalRef" />
+        <modal-programa-especializacion ref="modalProgramaEspecializacionRef"
+            :programaEspecializacionSelected=programaEspecializacionSelected />
     </div>
 </template>
 <script setup>
@@ -46,10 +46,12 @@ const homeStore = useHomeStore();
 let { programasEspecializacion } = storeToRefs(homeStore);
 homeStore.getListadoProgramasEspecializacion();
 
-const modalRef = ref(null);
+const modalProgramaEspecializacionRef = ref(null);
+const programaEspecializacionSelected = ref({});
 
-function verDetalleEspecializacion() {
-    modalRef.value?.show();
+function verDetalleEspecializacion(programaEspecializacion) {
+    programaEspecializacionSelected.value = programaEspecializacion;
+    modalProgramaEspecializacionRef.value?.show();
 }
 
 </script>

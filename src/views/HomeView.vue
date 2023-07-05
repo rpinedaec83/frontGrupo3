@@ -7,7 +7,7 @@
         <h5 class="aside-secondary-text">Con nuestros programas de especialización</h5>
       </div>
       <div v-if="!isMediumScreen" class="celular-background p-5" :style="[addMarginInCelular, addWidthSizeInCelular]">
-        <form-celular class="p-5"/>
+        <form-celular class="p-5" />
       </div>
     </div>
   </aside>
@@ -15,7 +15,9 @@
     <div class="d-flex pt-5 justify-content-between">
       <img :src="imgRespaldoBlack" alt="">
       <flecha-abajo-icon v-if="!isMediumScreen" />
-      <whats-app-icon />
+      <a :href="urlAPIWhatsApp" class="cursor-pointer"
+        target="_blank">
+        <whats-app-icon/></a>
     </div>
   </section>
   <section>
@@ -47,7 +49,8 @@
         </div>
         <div>
           <h3 :class="[isMediumScreen ? 'mt-4' : '']">Aprende de Expertos</h3>
-          <p v-if="!isMediumScreen">Aprende directamente de expertos del mercado a través del análisis y solución de problemas de programación.
+          <p v-if="!isMediumScreen">Aprende directamente de expertos del mercado a través del análisis y solución de
+            problemas de programación.
             Utilizando los frameworks y herramientas de mayor relevancia dentro del mundo del coding.</p>
         </div>
       </div>
@@ -57,7 +60,8 @@
         </div>
         <div>
           <h3 :class="[isMediumScreen ? 'mt-4' : '']">Clases Virtuales</h3>
-          <p v-if="!isMediumScreen">Aprovecha tu tiempo al máximo en nuestras clases virtuales y participa presencialmente de nuestras
+          <p v-if="!isMediumScreen">Aprovecha tu tiempo al máximo en nuestras clases virtuales y participa presencialmente
+            de nuestras
             hackathones semanales para conocer y participar de la comunidad profesional que liderará la transformación
             tecnológica del Perú.</p>
         </div>
@@ -76,7 +80,7 @@
     </div>
   </section>
   <section v-if="isMediumScreen">
-    <form-celular/>
+    <form-celular />
   </section>
 </template>
 
@@ -93,6 +97,9 @@ import imgChicaLaptop2 from '@/assets/img/chica-laptop-2.png';
 const isMediumScreen = ref(useMediaQuery('(max-width: 768px)'));
 const isLargeScreen = ref(useMediaQuery('(max-width: 1097px)'));
 
+const urlAPIWhatsApp = `https://api.whatsapp.com/send?phone=51922268779&text=${whatsAppMessage}`;
+const whatsAppMessage = 'Hola! quisiera coordinar un trabajo de desarrollo web contigo.'
+
 const addAsideSize = computed(() => {
   return addStyleWithCondition(!isMediumScreen.value, { height: '35rem' })
 });
@@ -106,7 +113,7 @@ const addMarginInCelular = computed(() => {
 });
 
 const addWidthSizeInCelular = computed(() => {
-  return addStyleWithCondition(isLargeScreen.value, { height: '50rem' })
+  return addStyleWithCondition(isLargeScreen.value, { height: '43rem', width: '60rem' })
 });
 
 const addStyleWithCondition = (condition, styleObject) => {
@@ -148,17 +155,9 @@ const addStyleWithCondition = (condition, styleObject) => {
     background-position: center center;
     background-image: url($img-celular);
     background-size: 100% 100%;
-    height: 45rem;
+    height: 40.5rem;
     width: 33.5rem;
     position: relative !important;
-  }
-
-  &-title {
-    @include defineFont($fuente_poppins, medium, 16px)
-  }
-
-  &-check-politicas {
-    @include defineFont($fuente_roboto, medium, 12px)
   }
 }
 

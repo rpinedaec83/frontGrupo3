@@ -6,7 +6,7 @@ export const useHomeStore = defineStore('home', () => {
     const programasEspecializacion = ref(null);
 
 
-    function getListadoProgramasEspecializacion() {
+    async function getListadoProgramasEspecializacion() {
 
         programasEspecializacion.value = [
             {
@@ -14,6 +14,7 @@ export const useHomeStore = defineStore('home', () => {
                 nombreEspecializacion: 'Desarrollo Front-End',
                 imagenUrl: "img/image-especializacion-1.png",
                 descripcion: "lorem ipsum dolor sit amet, consectetur adip incididunt ut labore et al. Ut enim ad minim veniam et dolore magna aliqu",
+                precio: 256.00,
                 activo: true
             },
             {
@@ -21,6 +22,7 @@ export const useHomeStore = defineStore('home', () => {
                 nombreEspecializacion: 'Desarrollo Back-End',
                 imagenUrl: "img/image-especializacion-2.png",
                 descripcion: "lorem ipsum dolor sit amet, consectetur adip incididunt ut labore et al. Ut enim ad minim veniam et dolore magna aliqu",
+                precio: 256.00,
                 activo: true
             },
             {
@@ -28,6 +30,7 @@ export const useHomeStore = defineStore('home', () => {
                 nombreEspecializacion: 'Desarrollo de Aplicativos Móviles',
                 imagenUrl: "img/image-especializacion-1.png",
                 descripcion: "lorem ipsum dolor sit amet, consectetur adip incididunt ut labore et al. Ut enim ad minim veniam et dolore magna aliqu",
+                precio: 256.00,
                 activo: false
             },
             {
@@ -35,6 +38,7 @@ export const useHomeStore = defineStore('home', () => {
                 nombreEspecializacion: 'Diseño de Experiencia de Usuario',
                 imagenUrl: "img/image-especializacion-2.png",
                 descripcion: "lorem ipsum dolor sit amet, consectetur adip incididunt ut labore et al. Ut enim ad minim veniam et dolore magna aliqu",
+                precio: 256.00,
                 activo: true
             }
         ];
