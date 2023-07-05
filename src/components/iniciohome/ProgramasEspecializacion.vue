@@ -12,27 +12,27 @@
                     <div class="especializacion-background p-4 d-flex flex-column justify-content-end"
                         :style="{ backgroundImage: `url('${programaEspecializacion.imagenUrl}')` }">
                         <h3 class="especializacion-titulo mb-3">{{ programaEspecializacion.nombreEspecializacion }}</h3>
-                        <div v-if="programaEspecializacion.activo" class="d-flex especializacion-boton justify-content-end">
+                        <div v-if="programaEspecializacion.activo"
+                            class="d-flex especializacion-boton justify-content-end cursor-pointer"
+                            @click="verDetalleEspecializacion()">
                             <boton-mas-icon class="me-2" />
                             <p>Ver más</p>
                         </div>
-                        <p v-else class="d-flex especializacion-boton justify-content-end">Proximamente</p>
+                        <p v-else class="d-flex especializacion-boton justify-content-end cursor-pointer"
+                            @click="verDetalleEspecializacion()">Proximamente</p>
                     </div>
                 </div>
             </div>
         </div>
+        <modal-programa-especializacion ref="modalRef" />
     </div>
 </template>
 <script setup>
 import { storeToRefs } from 'pinia';
 import { BotonMasIcon, PencilIcon } from '@/components/icons';
+import { ModalProgramaEspecializacion } from '@/components';
 import { useHomeStore } from '@/stores'
-
-
-const homeStore = useHomeStore();
-
-let { programasEspecializacion } = storeToRefs(homeStore);
-homeStore.getListadoProgramasEspecializacion();
+import { ref } from 'vue';
 
 defineProps({
     isMediumScreen: {
@@ -40,6 +40,17 @@ defineProps({
         required: true
     }
 });
+
+const homeStore = useHomeStore();
+
+let { programasEspecializacion } = storeToRefs(homeStore);
+homeStore.getListadoProgramasEspecializacion();
+
+const modalRef = ref(null);
+
+function verDetalleEspecializacion() {
+    modalRef.value?.show();
+}
 
 </script>
 <style lang="scss" scoped>
