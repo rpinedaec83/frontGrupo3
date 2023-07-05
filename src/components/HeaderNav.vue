@@ -23,7 +23,8 @@ import imgPachaqtec from '@/assets/img/pachaqtec-logo.png';
 const props = defineProps({
     viewActual: {
         type: String,
-        required: true
+        required: true,
+        default: "home"
     }
 });
 

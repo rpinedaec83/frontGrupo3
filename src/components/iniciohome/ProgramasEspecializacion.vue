@@ -10,7 +10,7 @@
                 <div v-for="programaEspecializacion in programasEspecializacion" :key="programaEspecializacion.id"
                     class="col-12 col-md-6 mb-5 p-0">
                     <div class="especializacion-background p-4 d-flex flex-column justify-content-end"
-                        :style="{ backgroundImage: `url(${programaEspecializacion.imagenUrl})` }">
+                        :style="{ backgroundImage: `url('${programaEspecializacion.imagenUrl}')` }">
                         <h3 class="especializacion-titulo mb-3">{{ programaEspecializacion.nombreEspecializacion }}</h3>
                         <div v-if="programaEspecializacion.activo" class="d-flex especializacion-boton justify-content-end">
                             <boton-mas-icon class="me-2" />
@@ -24,8 +24,15 @@
     </div>
 </template>
 <script setup>
+import { storeToRefs } from 'pinia';
 import { BotonMasIcon, PencilIcon } from '@/components/icons';
-import imgExample from '@/assets/img/image-example.png';
+import { useHomeStore } from '@/stores'
+
+
+const homeStore = useHomeStore();
+
+let { programasEspecializacion } = storeToRefs(homeStore);
+homeStore.getListadoProgramasEspecializacion();
 
 defineProps({
     isMediumScreen: {
@@ -33,34 +40,6 @@ defineProps({
         required: true
     }
 });
-
-let programasEspecializacion = [
-    {
-        id: 1,
-        nombreEspecializacion: 'Desarrollo Front-End',
-        imagenUrl: imgExample,
-        activo: true
-    },
-    {
-        id: 2,
-        nombreEspecializacion: 'Desarrollo Back-End',
-        imagenUrl: imgExample,
-        activo: true
-    },
-    {
-        id: 3,
-        nombreEspecializacion: 'Desarrollo de Aplicativos Móviles',
-        imagenUrl: imgExample,
-        activo: false
-    },
-    {
-        id: 4,
-        nombreEspecializacion: 'Diseño de Experiencia de Usuario',
-        imagenUrl: imgExample,
-        activo: true
-    }
-];
-
 
 </script>
 <style lang="scss" scoped>
