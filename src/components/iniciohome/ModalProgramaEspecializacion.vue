@@ -5,7 +5,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Detalle programa especialización</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" @click="cerrarModal()" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
@@ -16,6 +16,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary" @click="agregarACarrito()"> <i
+                            class="bi bi-cart-check-fill"></i>Agregar</button>
+                    <button type="button" class="btn btn-secondary" @click="cerrarModal()">
+                        <i class="bi bi-x-lg"></i>Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -23,6 +29,18 @@
 <script setup>
 import { Modal } from 'bootstrap'
 import { ref } from 'vue';
+import Swal from 'sweetalert2'
+
+import { useCarritoStore } from '@/stores'
+
+const props = defineProps({
+    programaEspecializacionSelected: {
+        type: Object,
+        required: true
+    }
+});
+
+const carritoStore = useCarritoStore();
 
 const modalProgramaEspecializacion = ref(null);
 
@@ -43,14 +61,27 @@ defineExpose({
     saveChanges,
     show,
     close
-})
-
-defineProps({
-    programaEspecializacionSelected: {
-        type: Object,
-        required: true
-    }
 });
+
+const agregarACarrito = () => {
+
+    Swal.fire({
+        title: '¿Está seguro de agregar el programa al carrito?',
+        showDenyButton: true,
+        confirmButtonText: 'Sí',
+        denyButtonText: `No`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            carritoStore.agregarProgramaACarrito(props.programaEspecializacionSelected);
+            cerrarModal();
+            Swal.fire('Programa agregado al carrito', '', 'success')
+        }
+    })
+}
+
+const cerrarModal = () => {
+    Modal.getInstance(modalProgramaEspecializacion.value)?.hide();
+}
 
 </script>
 <style lang="scss"></style>

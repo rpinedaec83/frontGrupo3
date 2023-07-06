@@ -5,8 +5,7 @@ export const useHomeStore = defineStore('home', () => {
 
     const programasEspecializacion = ref(null);
 
-
-    async function getListadoProgramasEspecializacion() {
+    const getListadoProgramasEspecializacion = async () => {
 
         programasEspecializacion.value = [
             {

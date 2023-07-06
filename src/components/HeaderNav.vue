@@ -5,20 +5,27 @@
                 <img :src="imgPachaqtec" alt="" srcset="">
             </div>
             <div class="d-flex">
-                <div class="me-5">
+                <div class="me-5 cursor-pointer">
                     <carrito-icon />
-                    <span id="cart_menu_num"><strong>5</strong></span>
+                    <span id="cart_menu_num"><strong>{{ cantidadProgramasEnCarrito }}</strong></span>
                 </div>
-                <menu-icon />
+                <menu-icon class="cursor-pointer"/>
             </div>
         </div>
     </nav>
 </template>
 <script setup>
 import { computed } from 'vue'
+import { storeToRefs } from 'pinia';
 
 import { CarritoIcon, MenuIcon } from '@/components/icons';
 import imgPachaqtec from '@/assets/img/pachaqtec-logo.png';
+
+import { useCarritoStore } from '@/stores'
+
+const carritoStore = useCarritoStore();
+
+let { cantidadProgramasEnCarrito } = storeToRefs(carritoStore);
 
 const props = defineProps({
     viewActual: {
@@ -29,15 +36,15 @@ const props = defineProps({
 });
 
 const isActiveColorBackground = computed(() => {
-  switch (props.viewActual) {
-    case 'home':
-      return false;
-    case 'login':
-      return false;
-    case 'compras':
-      return true;
-  }
-  return true;
+    switch (props.viewActual) {
+        case 'home':
+            return false;
+        case 'login':
+            return false;
+        case 'compras':
+            return true;
+    }
+    return true;
 });
 
 </script>
