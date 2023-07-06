@@ -116,5 +116,9 @@ async function onSubmit(values) {
         height: 50px !important;
         @include defineFont($fuente_poppins, bold, 14px)
     }
+
+    .invalid-feedback {
+        font-size: 0.8rem !important;
+    }
 }
 </style>
