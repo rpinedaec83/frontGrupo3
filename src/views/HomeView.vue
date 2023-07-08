@@ -2,41 +2,46 @@
   <aside class="aside-background" :style="addAsideSize">
     <div class="d-flex justify-content-between">
       <div class="d-flex flex-column justify-content-center">
-        <h1 class="aside-principal-text mb-5" :style="addMarginInHeaderTitle">¡Explota todo tu potencial tecnológico!
+        <h1 class="aside-principal-text mb-5" :style="addMarginInHeaderTitle">
+          ¡Explota todo tu potencial tecnológico!
         </h1>
         <h5 class="aside-secondary-text">Con nuestros programas de especialización</h5>
       </div>
-      <div v-if="!isMediumScreen" class="celular-background p-5" :style="[addMarginInCelular, addWidthSizeInCelular]">
+      <div
+        v-if="!isMediumScreen"
+        class="celular-background p-5"
+        :style="[addMarginInCelular, addWidthSizeInCelular]"
+      >
         <form-celular class="p-5" />
       </div>
     </div>
   </aside>
   <section>
     <div class="d-flex pt-5 justify-content-between">
-      <img :src="imgRespaldoBlack" alt="">
+      <img :src="imgRespaldoBlack" alt="" />
       <flecha-abajo-icon v-if="!isMediumScreen" />
-      <a :href="urlAPIWhatsApp" class="cursor-pointer"
-        target="_blank">
-        <whats-app-icon/></a>
+      <a :href="urlAPIWhatsApp" class="cursor-pointer" target="_blank"> <whats-app-icon /></a>
     </div>
   </section>
   <section>
-    <programas-especializacion :isMediumScreen=isMediumScreen />
+    <programas-especializacion :isMediumScreen="isMediumScreen" />
   </section>
   <section class="ps-0 pe-0">
     <div class="d-flex comunidad-background p-4" :class="[isMediumScreen ? 'flex-column' : '']">
-      <img :src="imgChicaLaptop2" alt="">
+      <img :src="imgChicaLaptop2" alt="" />
       <div class="d-flex flex-column justify-content-center">
         <h3 class="comunidad-titulo">Sé parte de la comunidad</h3>
-        <br>
-        <p class="comunidad-parrafo">Programas semi-presenciales para el desarrollo de habilidades de programación a lo
-          largo
+        <br />
+        <p class="comunidad-parrafo">
+          Programas semi-presenciales para el desarrollo de habilidades de programación a lo largo
           de todo el Stack tecnológico.
         </p>
-        <br>
-        <p class="comunidad-parrafo">Al finalizar sabrás cómo crear una página web y desarrollar la lógica detrás del
+        <br />
+        <p class="comunidad-parrafo">
+          Al finalizar sabrás cómo crear una página web y desarrollar la lógica detrás del
           funcionamiento de una aplicación, así como formar parte de una gran comunidad de
-          desarrolladores</p>
+          desarrolladores
+        </p>
       </div>
     </div>
   </section>
@@ -49,9 +54,11 @@
         </div>
         <div>
           <h3 :class="[isMediumScreen ? 'mt-4' : '']">Aprende de Expertos</h3>
-          <p v-if="!isMediumScreen">Aprende directamente de expertos del mercado a través del análisis y solución de
-            problemas de programación.
-            Utilizando los frameworks y herramientas de mayor relevancia dentro del mundo del coding.</p>
+          <p v-if="!isMediumScreen">
+            Aprende directamente de expertos del mercado a través del análisis y solución de
+            problemas de programación. Utilizando los frameworks y herramientas de mayor relevancia
+            dentro del mundo del coding.
+          </p>
         </div>
       </div>
       <div class="d-flex">
@@ -60,10 +67,11 @@
         </div>
         <div>
           <h3 :class="[isMediumScreen ? 'mt-4' : '']">Clases Virtuales</h3>
-          <p v-if="!isMediumScreen">Aprovecha tu tiempo al máximo en nuestras clases virtuales y participa presencialmente
-            de nuestras
-            hackathones semanales para conocer y participar de la comunidad profesional que liderará la transformación
-            tecnológica del Perú.</p>
+          <p v-if="!isMediumScreen">
+            Aprovecha tu tiempo al máximo en nuestras clases virtuales y participa presencialmente
+            de nuestras hackathones semanales para conocer y participar de la comunidad profesional
+            que liderará la transformación tecnológica del Perú.
+          </p>
         </div>
       </div>
       <div class="d-flex">
@@ -72,9 +80,11 @@
         </div>
         <div>
           <h3 :class="[isMediumScreen ? 'mt-4' : '']">Empleabilidad</h3>
-          <p v-if="!isMediumScreen">Al finalizar el programa y certificarte a nombre de IDAT, podrás acceder a ofertas
-            laborales especialmente identificadas para la comunidad PachaQTec, a través de
-            nuestra plataforma de empleabilidad IDAT JOB.</p>
+          <p v-if="!isMediumScreen">
+            Al finalizar el programa y certificarte a nombre de IDAT, podrás acceder a ofertas
+            laborales especialmente identificadas para la comunidad PachaQTec, a través de nuestra
+            plataforma de empleabilidad IDAT JOB.
+          </p>
         </div>
       </div>
     </div>
@@ -85,45 +95,49 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed } from 'vue'
 import { useMediaQuery } from '@vueuse/core'
 
-import { FlechaAbajoIcon, WhatsAppIcon, ComputadoraIcon, MaletaIcon, PersonaIcon } from '@/components/icons';
-import { FormCelular, ProgramasEspecializacion } from '@/components';
+import {
+  FlechaAbajoIcon,
+  WhatsAppIcon,
+  ComputadoraIcon,
+  MaletaIcon,
+  PersonaIcon
+} from '@/components/icons'
+import { FormCelular, ProgramasEspecializacion } from '@/components'
 
-import imgRespaldoBlack from '@/assets/img/respaldo-black.png';
-import imgChicaLaptop2 from '@/assets/img/chica-laptop-2.png';
+import imgRespaldoBlack from '@/assets/img/respaldo-black.png'
+import imgChicaLaptop2 from '@/assets/img/chica-laptop-2.png'
 
-const isMediumScreen = ref(useMediaQuery('(max-width: 768px)'));
-const isLargeScreen = ref(useMediaQuery('(max-width: 1097px)'));
+const isMediumScreen = ref(useMediaQuery('(max-width: 768px)'))
+const isLargeScreen = ref(useMediaQuery('(max-width: 1097px)'))
 
-const urlAPIWhatsApp = `https://api.whatsapp.com/send?phone=51922268779&text=${whatsAppMessage}`;
+const urlAPIWhatsApp = `https://api.whatsapp.com/send?phone=51922268779&text=${whatsAppMessage}`
 const whatsAppMessage = 'Hola! quisiera coordinar un trabajo de desarrollo web contigo.'
 
 const addAsideSize = computed(() => {
   return addStyleWithCondition(!isMediumScreen.value, { height: '35rem' })
-});
+})
 
 const addMarginInHeaderTitle = computed(() => {
   return addStyleWithCondition(isMediumScreen.value, { marginTop: '10rem' })
-});
+})
 
 const addMarginInCelular = computed(() => {
   return addStyleWithCondition(!isMediumScreen.value, { marginTop: '2.1rem' })
-});
+})
 
 const addWidthSizeInCelular = computed(() => {
   return addStyleWithCondition(isLargeScreen.value, { height: '43rem', width: '60rem' })
-});
+})
 
 const addStyleWithCondition = (condition, styleObject) => {
   if (condition) {
-    return styleObject;
+    return styleObject
   }
-  return {};
+  return {}
 }
-
-
 </script>
 <style lang="scss" scoped>
 .form-control {
@@ -135,18 +149,18 @@ const addStyleWithCondition = (condition, styleObject) => {
   &-background {
     background-position: center center;
     background-size: 100% 100%;
-    background-image: url($img-chica-laptop);
+    background-image: url($img-banner);
     position: relative !important;
   }
 
   &-principal-text {
     color: $color-blanco;
-    @include defineFont($fuente_poppins, bold, 54px)
+    @include defineFont($fuente_poppins, bold, 54px);
   }
 
   &-secondary-text {
     color: $color-blanco;
-    @include defineFont($fuente_poppins, medium, 20px)
+    @include defineFont($fuente_poppins, medium, 20px);
   }
 }
 

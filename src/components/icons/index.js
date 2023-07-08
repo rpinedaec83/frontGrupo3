@@ -11,3 +11,7 @@ export { default as CarritoButtonIcon} from './CarritoButtonIcon.vue';
 export { default as ComputadoraIcon} from './beneficios/ComputadoraIcon.vue';
 export { default as MaletaIcon} from './beneficios/MaletaIcon.vue';
 export { default as PersonaIcon} from './beneficios/PersonaIcon.vue';
+
+//login
+export { default as FacebookLogo} from './login/FacebookLogo.vue';
+export { default as LinkedInLogo} from './login/LinkedInLogo.vue';
