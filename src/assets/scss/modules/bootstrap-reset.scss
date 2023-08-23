@@ -1,0 +1,6 @@
+
+@use "variables" as variables;
+
+.btn-primary {
+    border-color: variables.$color-blanco;
+}
